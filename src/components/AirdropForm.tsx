@@ -1,7 +1,7 @@
 "use client"
 
 import InputField from "./ui/InputFields"
-import { useState } from "react"
+import { useState, useMemo} from "react"
 import { chainsToTSender, tsenderAbi, erc20Abi } from "../Constants"
 import { useConfig, useChainId, useAccount } from "wagmi"
 import {readContract} from "@wagmi/core"
@@ -13,6 +13,7 @@ export default function AirdropForm() {
       const chainId = useChainId()
       const config = useConfig()
       const account = useAccount()
+      const total:number = useMemo(() => calculateTotal(amounts), [amounts])
 
       async function getApprovedAmount(tsenderAddress:string|null) : Promise<number> {
             if (!tsenderAddress) {
@@ -37,6 +38,7 @@ export default function AirdropForm() {
             // Wait for transaction confirmation and show success message
 
             const tSenderAddress = chainsToTSender[chainId]["tsender"]
+            console.log("TSender Address: ", tSenderAddress)
             //We get the amount approved
             const approvedAmount = await getApprovedAmount(tSenderAddress)
             console.log("Approved Amount: ", approvedAmount)
