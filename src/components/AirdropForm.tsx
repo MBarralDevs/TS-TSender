@@ -3,13 +3,31 @@
 import InputField from "./ui/InputFields"
 import { useState } from "react"
 import { chainsToTSender, tsenderAbi, erc20Abi } from "../Constants"
-import { useAccount, useChainId } from "wagmi"
+import { useConfig, useChainId, useAccount } from "wagmi"
+import {readContract} from "@wagmi/core"
 
 export default function AirdropForm() {
       const [tokenAddress, setTokenAddress] = useState("")
       const [recipients, setRecipients] = useState("")
       const [amounts, setAmounts] = useState("")
       const chainId = useChainId()
+      const config = useConfig()
+      const account = useAccount()
+
+      async function getApprovedAmount(tsenderAddress:string|null) : Promise<number> {
+            if (!tsenderAddress) {
+                  alert("No addresses found, please use a supported network.")
+                  return 0
+            }
+            
+            //This function read from the chain to see if we approved enough tokens (allowance)
+            const response = await readContract(config, {
+                  abi: erc20Abi,
+                  address: tokenAddress as `0x${string}`,
+                  functionName: "allowance",
+                  args: [account.address, tsenderAddress as `0x${string}`],
+            })
+      }
 
       async function handleSubmit() {
             // If already approve, return and move to step 2
