@@ -5,6 +5,7 @@ import { useState, useMemo} from "react"
 import { chainsToTSender, tsenderAbi, erc20Abi } from "../Constants"
 import { useConfig, useChainId, useAccount } from "wagmi"
 import {readContract} from "@wagmi/core"
+import { calculateTotal } from "../utils/calculateTotal/CalculateTotal" 
 
 export default function AirdropForm() {
       const [tokenAddress, setTokenAddress] = useState("")
