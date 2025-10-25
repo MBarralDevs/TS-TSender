@@ -3,7 +3,8 @@ export function calculateTotal(amounts: string): number {
         .split(/[,\n]+/)
         .map(amt => amt.trim())
         .filter(amt => amt !== "")
-        .map(amt => parseFloat(amt))
+        .map(amt => Number(amt))
+    
     if (amountArray.some(isNaN)) {
         return 0
     }
