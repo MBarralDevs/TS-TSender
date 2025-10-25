@@ -4,8 +4,8 @@ import InputField from "./ui/InputFields"
 import { useState, useMemo} from "react"
 import { chainsToTSender, tsenderAbi, erc20Abi } from "../Constants"
 import { useConfig, useChainId, useAccount } from "wagmi"
-import {readContract} from "@wagmi/core"
-import { calculateTotal } from "../utils/calculateTotal/CalculateTotal" 
+import { readContract } from "@wagmi/core"
+import { calculateTotal } from "../utils" 
 
 export default function AirdropForm() {
       const [tokenAddress, setTokenAddress] = useState("")
