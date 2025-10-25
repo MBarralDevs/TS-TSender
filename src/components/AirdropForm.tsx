@@ -19,7 +19,7 @@ export default function AirdropForm() {
                   alert("No addresses found, please use a supported network.")
                   return 0
             }
-            
+
             //This function read from the chain to see if we approved enough tokens (allowance)
             const response = await readContract(config, {
                   abi: erc20Abi,
@@ -27,6 +27,7 @@ export default function AirdropForm() {
                   functionName: "allowance",
                   args: [account.address, tsenderAddress as `0x${string}`],
             })
+            return Number(response)
       }
 
       async function handleSubmit() {
@@ -36,8 +37,9 @@ export default function AirdropForm() {
             // Wait for transaction confirmation and show success message
 
             const tSenderAddress = chainsToTSender[chainId]["tsender"]
-            console.log("TSender Address:", tSenderAddress)
-            console.log("Chain ID:", chainId)
+            //We get the amount approved
+            const approvedAmount = await getApprovedAmount(tSenderAddress)
+            console.log("Approved Amount: ", approvedAmount)
       }
 
       return (
@@ -62,7 +64,8 @@ export default function AirdropForm() {
                   onChange={(e) => setAmounts(e.target.value)}
                   large={true}
             />
-            <button onClick={handleSubmit}>
+            <button onClick={handleSubmit}
+                  className="w-full mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg active:scale-95 transform">
                   Submit Airdrop
             </button>
 
