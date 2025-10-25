@@ -2,17 +2,24 @@
 
 import InputField from "./ui/InputFields"
 import { useState } from "react"
+import { chainsToTSender, tsenderAbi, erc20Abi } from "../Constants"
+import { useAccount, useChainId } from "wagmi"
 
 export default function AirdropForm() {
       const [tokenAddress, setTokenAddress] = useState("")
       const [recipients, setRecipients] = useState("")
       const [amounts, setAmounts] = useState("")
+      const chainId = useChainId()
 
       async function handleSubmit() {
             // If already approve, return and move to step 2
             // Else, call approve function on token contract
             // After approve is confirmed, call airdrop function on tsender contract
             // Wait for transaction confirmation and show success message
+
+            const tSenderAddress = chainsToTSender[chainId]["tsender"]
+            console.log("TSender Address:", tSenderAddress)
+            console.log("Chain ID:", chainId)
       }
 
       return (
