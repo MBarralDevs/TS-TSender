@@ -6,9 +6,8 @@ export default defineConfig({
     test: {
         environment: 'jsdom',
         exclude: ['**/node_modules/**', '**/test/**', 'playwright-report/**', 'test-results/**'],
-        deps: {
-            inline: ['wagmi', '@wagmi/core']
-        }
     },
-
+    ssr: {
+        noExternal: ['wagmi', '@wagmi/core']
+    }
 })
