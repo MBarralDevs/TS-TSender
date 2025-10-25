@@ -8,6 +8,13 @@ export default function AirdropForm() {
       const [recipients, setRecipients] = useState("")
       const [amounts, setAmounts] = useState("")
 
+      async function handleSubmit() {
+            // If already approve, return and move to step 2
+            // Else, call approve function on token contract
+            // After approve is confirmed, call airdrop function on tsender contract
+            // Wait for transaction confirmation and show success message
+      }
+
       return (
       <div>
             <InputField
@@ -30,6 +37,10 @@ export default function AirdropForm() {
                   onChange={(e) => setAmounts(e.target.value)}
                   large={true}
             />
+            <button onClick={handleSubmit}>
+                  Submit Airdrop
+            </button>
+
       </div>
       )           
 }
