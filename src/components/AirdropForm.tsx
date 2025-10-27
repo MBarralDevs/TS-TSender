@@ -9,8 +9,8 @@ import { chainsToTSender, tsenderAbi, erc20Abi } from "../Constants"
 import { useConfig, useChainId, useAccount, useWriteContract } from "wagmi"
 import { readContract, waitForTransactionReceipt } from "@wagmi/core"
 import { calculateTotal } from "../utils"
-import { useLocalStorage } from "../hooks/useLocalStorage"
-import { useTokenInfo } from "../hooks/useTokenInfo"
+import { useLocalStorage } from "../hooks/UseLocalStorage"
+import { useTokenInfo } from "../hooks/UseTokenInfo"
 
 export default function AirdropForm() {
     const [tokenAddress, setTokenAddress] = useLocalStorage("tsender-tokenAddress", "")
