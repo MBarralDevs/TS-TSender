@@ -12,7 +12,12 @@ import { calculateTotal } from "../utils"
 import { useLocalStorage } from "../hooks/UseLocalStorage"
 import { useTokenInfo } from "../hooks/UseTokenInfo"
 
-export default function AirdropForm() {
+interface AirdropFormProps {
+    isUnsafeMode: boolean
+    onModeChange: (unsafe: boolean) => void
+}
+
+export default function AirdropForm({ isUnsafeMode, onModeChange }: AirdropFormProps) {
     const [tokenAddress, setTokenAddress] = useLocalStorage("tsender-tokenAddress", "")
     const [recipients, setRecipients] = useLocalStorage("tsender-recipients", "")
     const [amounts, setAmounts] = useLocalStorage("tsender-amounts", "")
