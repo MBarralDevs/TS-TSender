@@ -7,12 +7,8 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/TSender/);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('http://localhost:3000');
-
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('Should show form when connected, otherwise not', async ({ page }) => {
+  await page.goto('/')
+  //We check that we see "Please Connect Wallet"
+  await expect(page.getByText('Please Connect')).toBeVisible();
 });
