@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test';
+import basicSetup from '../wallet-setup/basic.setup';
+import { testWithSynpress } from '@synthetixio/synpress'; 
+import { MetaMask, metaMaskFixtures } from '@synthetixio/synpress/playwright';
 
 test('has title', async ({ page }) => {
   await page.goto('http://localhost:3000');
