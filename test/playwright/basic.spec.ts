@@ -21,4 +21,12 @@ test('Should show form when connected, otherwise not', async ({ page, context, m
 
   //We create a new Metamask instance
   const metamask = new MetaMask(context, metamaskPage, basicSetup.walletPassword, extensionId);
+
+  //Click the connect button to connect the wallet
+  await page.getByTestId("rk-connect-button").click();
+  await page.getByTestId("rk-wallet-option-io.metamask").waitFor({  state: 'visible', timeout: 30000  });
+  await page.getByTestId("rk-wallet-option-io.metamask").click();
+  
+  //We approve the connection in Metamask
+  await metamask.connectToDapp();
 });
