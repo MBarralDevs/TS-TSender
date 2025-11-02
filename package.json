@@ -11,7 +11,12 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "synpress:cache": "synpress",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "synpress": "pnpm synpress:cache && playwright test"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.9",
