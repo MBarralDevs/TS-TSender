@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/.cache-synpress
 /.pnp
 .pnp.*
 .yarn/*
@@ -48,5 +47,8 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Synpress cache
+.cache-synpress/
 
 
