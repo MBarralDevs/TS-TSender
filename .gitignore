@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.cache-synpress
 /.pnp
 .pnp.*
 .yarn/*
@@ -48,4 +49,4 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 
-.cache-synpress/
+
