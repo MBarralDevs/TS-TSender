@@ -51,4 +51,8 @@ node_modules/
 # Synpress cache
 .cache-synpress/
 
+# Next.js generated types
+types/
+.next/
+out/
 
